@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ubuntu下将文件备份到github - ccbirds
+          nanopi neo2 black 上电使用 - ccbirds
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2020/02/27/ubuntu下将文件备份到github/">
+    <link rel="canonical" href="http://yoursite-url/2020/02/27/nanopi-neo2-black-上电使用/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -86,14 +86,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                            
                               <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
                             
-                              <a class="tag" href="/tags/#git" title="git">git</a>
-                            
-                              <a class="tag" href="/tags/#github" title="github">github</a>
+                              <a class="tag" href="/tags/#SSH" title="SSH">SSH</a>
                             
                         </div>
-                        <h1>ubuntu下将文件备份到github</h1>
+                        <h1>nanopi neo2 black 上电使用</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by ccbirds on
@@ -214,31 +214,40 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客</p>
+                <p>最近上手一个小东西，nanopi neo2 black，非常精致，可以运行linux core ，可以运行Ubuntu 内核，感兴趣可以淘宝，或者<a href="http://nanopi.org/" target="_blank" rel="noopener">官网</a>看看。</p>
 <hr>
-<h3><span id="1-安装git">1. 安装git</span></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<h3><span id="2生成ssh-key">2.生成ssh key</span></h3>
-<p>使用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C “github username”</span><br></pre></td></tr></table></figure>
-<p>会生成下面三个文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id_rsa  id_rsa.pub  known_hosts</span><br></pre></td></tr></table></figure>
-<h3><span id="3github-setting">3.github setting</span></h3>
-<p>登录github，setting,左边有SSH and GPG keys 选项，点new<br>
-ssh key。title随便写，key 填写id_rsa.pub文件中的内容。<br>
-新建一个仓库用来备份。<br>
-测试ssh key是否成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">Hi ccbirds! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
-<h3><span id="4在需要备份的目录下初始化git">4.在需要备份的目录下初始化git</span></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">Reinitialized existing Git repository <span class="keyword">in</span> /home/czq/blog/.git/</span><br></pre></td></tr></table></figure>
-<h3><span id="5设置git">5.设置git</span></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name “github user name” </span><br><span class="line">$ git config user.email “github email”</span><br><span class="line">$ git config user.name //查看设置的name</span><br><span class="line">$ git config user.email //查看设置的邮箱</span><br><span class="line">$ git remote add origin https://github.com/ccbirds/hexo.git //github 仓库地址</span><br></pre></td></tr></table></figure>
 <p><img src="1.png" alt><br>
-如果显示origin已经存在,删除origin，并重新设置origin</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm origin </span><br><span class="line">$ git remote add origin https://github.com/ccbirds/hexo.git</span><br></pre></td></tr></table></figure>
-<h3><span id="6添加文件">6.添加文件</span></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt //指定一个文件</span><br><span class="line">$ git add .    //目录下的所有文件</span><br><span class="line">$ git commit -m <span class="string">"2020-02-27"</span> //备注</span><br><span class="line">$ git push origin master</span><br><span class="line">Username <span class="keyword">for</span> <span class="string">'https://github.com'</span>: ccbirds //输入用户名</span><br><span class="line">Password <span class="keyword">for</span> <span class="string">'https://ccbirds@github.com'</span>:  //输入密码，密码不会显示</span><br><span class="line">Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/ccbirds/hexo.git</span><br><span class="line">   da79977..341a1a4  master -&gt; master</span><br></pre></td></tr></table></figure>
-<h3><span id="这样就成功啦">这样就成功啦</span></h3>
+<img src="2.jpg" alt><br>
+我买这个板子的时候，赠送了16GB的TF卡，里面有系统，所以我没有编译系统，关于系统的制作可以参考官方<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO2_Black#Configure_System_with_npi-config" target="_blank" rel="noopener">文档</a></p>
+<hr>
+<h3><span id="1-通过ssh连接">1. 通过ssh连接</span></h3>
+<hr>
+<p>登录方式有有三种：串口、HDMI、ssh<br>
+串口需要使用debug UART引脚，然而板子出厂时这个引脚是不焊的，所以暂时没有办法使用串口登录。<br>
+HDMI是使用提供的模块，也是通过串口debug UART连接，所以暂时也无法使用。<br>
+只能使用SSH登录。<br>
+由于身边没有路由器，无法使用有线网络。只能使用无线网卡连接网络。<br>
+插上网卡，接上键盘，没有显示输出，只能盲打（大家如果能使用有线，nanopi会直接获取ip，就可以跳过这步了）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ su root</span><br><span class="line">fa</span><br><span class="line">$ nmcli r wifi on //打开wifi</span><br><span class="line">$ nmcli dev //显示网络设备，无线网卡是wlan0</span><br><span class="line">$ nmcli dev wifi //扫描wifi信号</span><br><span class="line">$ nmcli dev wifi connect <span class="string">"SSID"</span> password <span class="string">"PASSWORD"</span> ifname wlan0 //连接无线网，SSID是无线网名称，PASSWORD是密码</span><br></pre></td></tr></table></figure>
+<p>等一会就会从oled上看到IP了，使用xshell能过ssh就可以登录了，登录名pi，密码pi。root的密码fa。<br>
+<img src="3.png" alt><br>
+这样就连接成功了。</p>
+<hr>
+<h3><span id="2-更新">2. 更新</span></h3>
+<hr>
+<p>更改更新源为国内源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/apt/source.list</span><br><span class="line">//加入以下源</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe</span><br><span class="line">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe</span><br></pre></td></tr></table></figure>
+<p>有点慢，大家耐心等待（也可以是我的网慢）<br>
+执行更新命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+<p><img src="4.png" alt></p>
+<hr>
+<h3><span id="3测网速">3.测网速</span></h3>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install speedtest-cli //安装</span><br><span class="line">$ sudo speedtest-cli //测试，有时可能测不出来</span><br><span class="line">Retrieving speedtest.net configuration...</span><br><span class="line">Retrieving speedtest.net server list...</span><br><span class="line">Testing from China Mobile Guangdong (223.104.236.97)...</span><br><span class="line">Selecting best server based on latency...</span><br><span class="line">Hosted by ChinaMobile, Liaoning Branch,Dalian (Dalian) [247.24 km]: 75.654 ms</span><br><span class="line">Testing download speed........................................</span><br><span class="line">Download: 2.42 Mbit/s</span><br><span class="line">Testing upload speed..................................................</span><br><span class="line">Upload: 0.76 Mbit/s</span><br><span class="line">我是热点连接，手机又被限速了所以很慢</span><br></pre></td></tr></table></figure>
+<p>我是热点连接，手机又被限速了所以很慢</p>
+<hr>
+<p>大家可以为所欲为了，哈哈。</p>
 <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -262,13 +271,9 @@ gitalk.render('gitalk-container')
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2020/02/27/nanopi-neo2-black-上电使用/" data-toggle="tooltip" data-placement="top" title="nanopi neo2 black 上电使用">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2020/02/27/为使用hexo搭建的博客加入评论系统gitalk/" data-toggle="tooltip" data-placement="top" title="为使用hexo搭建的博客加入评论系统gitalk">Next Post &rarr;</a>
+                            <a href="/2020/02/27/ubuntu下将文件备份到github/" data-toggle="tooltip" data-placement="top" title="ubuntu下将文件备份到github">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -294,7 +299,7 @@ gitalk.render('gitalk-container')
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 安装git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.生成ssh key</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.github setting</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4.在需要备份的目录下初始化git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5.设置git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">6.添加文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">这样就成功啦</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 通过ssh连接</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 更新</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.测网速</span></a></li></ol>
         
         </div>
       </aside>
@@ -314,11 +319,11 @@ gitalk.render('gitalk-container')
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                        
                           <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
                         
-                          <a class="tag" href="/tags/#git" title="git">git</a>
-                        
-                          <a class="tag" href="/tags/#github" title="github">github</a>
+                          <a class="tag" href="/tags/#SSH" title="SSH">SSH</a>
                         
                     </div>
                 </section>
