@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content>
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          为使用hexo搭建的博客加入评论系统gitalk - ccbirds
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite-url/2020/02/27/为使用hexo搭建的博客加入评论系统gitalk/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('Demo.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                            
+                              <a class="tag" href="/tags/#gitalk" title="gitalk">gitalk</a>
+                            
+                        </div>
+                        <h1>为使用hexo搭建的博客加入评论系统gitalk</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by ccbirds on
+                            2020-02-27
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">ccbirds blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>使用hexo结合github搭建自己的个人博客网站，非常方便，而且免费，对于个人来说是一个不错的选择。不过有一个缺点是没有评论系统。需要自己额外引入评论插件。<br>
+现在常用的评论插件有三种：<br>
+disqus：已经被墙了，暂时不考虑。<br>
+gitment：基于github的一个评论系统，但是作者长时间没有维护，需要使用自己的服务器。<br>
+gitalk：也是基于github的一个评论系统，目前可以正常使用。<br>
+主题不同添加gitalk的方法也略有区别，有的主题本身带有gitalk评论，打开相应的开关就可以。我使用的主题是beantech，本身没有gitalk评论系统。</p>
+<hr>
+<h2><span id="1注册">1.注册</span></h2>
+<hr>
+<p><a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">Register a new OAuth application</a><br>
+<img src="1.png" alt><br>
+Application name：随便写。<br>
+Homepage URL：网站主页的地址<br>
+Application description：随便写<br>
+Authorization callback URL：网站主页地址<br>
+<img src="2.png" alt><br>
+会生成Client ID与Client Secret。保存好后面会用到。<br>
+<img src="3.png" alt></p>
+<hr>
+<h2><span id="2配置gitalk">2.配置gitalk</span></h2>
+<hr>
+<h3><span id="创建md5minjs文件">创建md5.min.js文件</span></h3>
+<p>在主题目录source/js中创建md5.min.js文件，内容如下（代码引用自其他文章，链接在文章下方）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">!</span> <span class="string">function(n)</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="string">"use strict"</span><span class="string">;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">t(n,</span> <span class="string">t)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">r</span> <span class="string">=</span> <span class="string">(65535</span> <span class="string">&amp;</span> <span class="string">n)</span> <span class="string">+</span> <span class="string">(65535</span> <span class="string">&amp;</span> <span class="string">t);</span></span><br><span class="line">        <span class="string">return</span> <span class="string">(n</span> <span class="string">&gt;&gt;</span> <span class="number">16</span><span class="string">)</span> <span class="string">+</span> <span class="string">(t</span> <span class="string">&gt;&gt;</span> <span class="number">16</span><span class="string">)</span> <span class="string">+</span> <span class="string">(r</span> <span class="string">&gt;&gt;</span> <span class="number">16</span><span class="string">)</span> <span class="string">&lt;&lt;</span> <span class="number">16</span> <span class="string">|</span> <span class="number">65535</span> <span class="string">&amp;</span> <span class="string">r</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">r(n,</span> <span class="string">t)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">n</span> <span class="string">&lt;&lt;</span> <span class="string">t</span> <span class="string">|</span> <span class="string">n</span> <span class="string">&gt;&gt;&gt;</span> <span class="number">32</span> <span class="bullet">-</span> <span class="string">t</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">e(n,</span> <span class="string">e,</span> <span class="string">o,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">t(r(t(t(e,</span> <span class="string">n),</span> <span class="string">t(u,</span> <span class="string">f)),</span> <span class="string">c),</span> <span class="string">o)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">o(n,</span> <span class="string">t,</span> <span class="string">r,</span> <span class="string">o,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e(t</span> <span class="string">&amp;</span> <span class="string">r</span> <span class="string">|</span> <span class="string">~t</span> <span class="string">&amp;</span> <span class="string">o,</span> <span class="string">n,</span> <span class="string">t,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">u(n,</span> <span class="string">t,</span> <span class="string">r,</span> <span class="string">o,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e(t</span> <span class="string">&amp;</span> <span class="string">o</span> <span class="string">|</span> <span class="string">r</span> <span class="string">&amp;</span> <span class="string">~o,</span> <span class="string">n,</span> <span class="string">t,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">c(n,</span> <span class="string">t,</span> <span class="string">r,</span> <span class="string">o,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e(t</span> <span class="string">^</span> <span class="string">r</span> <span class="string">^</span> <span class="string">o,</span> <span class="string">n,</span> <span class="string">t,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">f(n,</span> <span class="string">t,</span> <span class="string">r,</span> <span class="string">o,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e(r</span> <span class="string">^</span> <span class="string">(t</span> <span class="string">|</span> <span class="string">~o),</span> <span class="string">n,</span> <span class="string">t,</span> <span class="string">u,</span> <span class="string">c,</span> <span class="string">f)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">i(n,</span> <span class="string">r)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">n[r</span> <span class="string">&gt;&gt;</span> <span class="number">5</span><span class="string">]</span> <span class="string">|=</span> <span class="number">128</span> <span class="string">&lt;&lt;</span> <span class="string">r</span> <span class="string">%</span> <span class="number">32</span><span class="string">,</span> <span class="string">n[14</span> <span class="string">+</span> <span class="string">(r</span> <span class="string">+</span> <span class="number">64</span> <span class="string">&gt;&gt;&gt;</span> <span class="number">9</span> <span class="string">&lt;&lt;</span> <span class="number">4</span><span class="string">)]</span> <span class="string">=</span> <span class="string">r;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">e,</span> <span class="string">i,</span> <span class="string">a,</span> <span class="string">d,</span> <span class="string">h,</span> <span class="string">l</span> <span class="string">=</span> <span class="number">1732584193</span><span class="string">,</span></span><br><span class="line">            <span class="string">g</span> <span class="string">=</span> <span class="number">-271733879</span><span class="string">,</span></span><br><span class="line">            <span class="string">v</span> <span class="string">=</span> <span class="number">-1732584194</span><span class="string">,</span></span><br><span class="line">            <span class="string">m</span> <span class="string">=</span> <span class="number">271733878</span><span class="string">;</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(e</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">e</span> <span class="string">&lt;</span> <span class="string">n.length;</span> <span class="string">e</span> <span class="string">+=</span> <span class="number">16</span><span class="string">)</span> <span class="string">i</span> <span class="string">=</span> <span class="string">l,</span> <span class="string">a</span> <span class="string">=</span> <span class="string">g,</span> <span class="string">d</span> <span class="string">=</span> <span class="string">v,</span> <span class="string">h</span> <span class="string">=</span> <span class="string">m,</span> <span class="string">g</span> <span class="string">=</span> <span class="string">f(g</span> <span class="string">=</span> <span class="string">f(g</span> <span class="string">=</span> <span class="string">f(g</span> <span class="string">=</span> <span class="string">f(g</span> <span class="string">=</span> <span class="string">c(g</span> <span class="string">=</span> <span class="string">c(g</span> <span class="string">=</span> <span class="string">c(g</span> <span class="string">=</span> <span class="string">c(g</span> <span class="string">=</span> <span class="string">u(g</span> <span class="string">=</span> <span class="string">u(g</span> <span class="string">=</span> <span class="string">u(g</span> <span class="string">=</span> <span class="string">u(g</span> <span class="string">=</span> <span class="string">o(g</span> <span class="string">=</span> <span class="string">o(g</span> <span class="string">=</span> <span class="string">o(g</span> <span class="string">=</span> <span class="string">o(g,</span> <span class="string">v</span> <span class="string">=</span> <span class="string">o(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">o(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">o(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e],</span> <span class="number">7</span><span class="string">,</span> <span class="number">-680876936</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">1</span><span class="string">],</span> <span class="number">12</span><span class="string">,</span> <span class="number">-389564586</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">2</span><span class="string">],</span> <span class="number">17</span><span class="string">,</span> <span class="number">606105819</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">3</span><span class="string">],</span> <span class="number">22</span><span class="string">,</span> <span class="number">-1044525330</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">o(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">o(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">o(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">4</span><span class="string">],</span> <span class="number">7</span><span class="string">,</span> <span class="number">-176418897</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">5</span><span class="string">],</span> <span class="number">12</span><span class="string">,</span> <span class="number">1200080426</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">6</span><span class="string">],</span> <span class="number">17</span><span class="string">,</span> <span class="number">-1473231341</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">7</span><span class="string">],</span> <span class="number">22</span><span class="string">,</span> <span class="number">-45705983</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">o(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">o(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">o(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">8</span><span class="string">],</span> <span class="number">7</span><span class="string">,</span> <span class="number">1770035416</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">9</span><span class="string">],</span> <span class="number">12</span><span class="string">,</span> <span class="number">-1958414417</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">10</span><span class="string">],</span> <span class="number">17</span><span class="string">,</span> <span class="number">-42063</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">11</span><span class="string">],</span> <span class="number">22</span><span class="string">,</span> <span class="number">-1990404162</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">o(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">o(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">o(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">12</span><span class="string">],</span> <span class="number">7</span><span class="string">,</span> <span class="number">1804603682</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">13</span><span class="string">],</span> <span class="number">12</span><span class="string">,</span> <span class="number">-40341101</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">14</span><span class="string">],</span> <span class="number">17</span><span class="string">,</span> <span class="number">-1502002290</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">15</span><span class="string">],</span> <span class="number">22</span><span class="string">,</span> <span class="number">1236535329</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">u(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">u(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">u(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">1</span><span class="string">],</span> <span class="number">5</span><span class="string">,</span> <span class="number">-165796510</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">6</span><span class="string">],</span> <span class="number">9</span><span class="string">,</span> <span class="number">-1069501632</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">11</span><span class="string">],</span> <span class="number">14</span><span class="string">,</span> <span class="number">643717713</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e],</span> <span class="number">20</span><span class="string">,</span> <span class="number">-373897302</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">u(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">u(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">u(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">5</span><span class="string">],</span> <span class="number">5</span><span class="string">,</span> <span class="number">-701558691</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">10</span><span class="string">],</span> <span class="number">9</span><span class="string">,</span> <span class="number">38016083</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">15</span><span class="string">],</span> <span class="number">14</span><span class="string">,</span> <span class="number">-660478335</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">4</span><span class="string">],</span> <span class="number">20</span><span class="string">,</span> <span class="number">-405537848</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">u(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">u(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">u(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">9</span><span class="string">],</span> <span class="number">5</span><span class="string">,</span> <span class="number">568446438</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">14</span><span class="string">],</span> <span class="number">9</span><span class="string">,</span> <span class="number">-1019803690</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">3</span><span class="string">],</span> <span class="number">14</span><span class="string">,</span> <span class="number">-187363961</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">8</span><span class="string">],</span> <span class="number">20</span><span class="string">,</span> <span class="number">1163531501</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">u(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">u(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">u(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">13</span><span class="string">],</span> <span class="number">5</span><span class="string">,</span> <span class="number">-1444681467</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">2</span><span class="string">],</span> <span class="number">9</span><span class="string">,</span> <span class="number">-51403784</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">7</span><span class="string">],</span> <span class="number">14</span><span class="string">,</span> <span class="number">1735328473</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">12</span><span class="string">],</span> <span class="number">20</span><span class="string">,</span> <span class="number">-1926607734</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">c(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">c(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">c(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">5</span><span class="string">],</span> <span class="number">4</span><span class="string">,</span> <span class="number">-378558</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">8</span><span class="string">],</span> <span class="number">11</span><span class="string">,</span> <span class="number">-2022574463</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">11</span><span class="string">],</span> <span class="number">16</span><span class="string">,</span> <span class="number">1839030562</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">14</span><span class="string">],</span> <span class="number">23</span><span class="string">,</span> <span class="number">-35309556</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">c(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">c(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">c(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">1</span><span class="string">],</span> <span class="number">4</span><span class="string">,</span> <span class="number">-1530992060</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">4</span><span class="string">],</span> <span class="number">11</span><span class="string">,</span> <span class="number">1272893353</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">7</span><span class="string">],</span> <span class="number">16</span><span class="string">,</span> <span class="number">-155497632</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">10</span><span class="string">],</span> <span class="number">23</span><span class="string">,</span> <span class="number">-1094730640</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">c(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">c(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">c(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">13</span><span class="string">],</span> <span class="number">4</span><span class="string">,</span> <span class="number">681279174</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e],</span> <span class="number">11</span><span class="string">,</span> <span class="number">-358537222</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">3</span><span class="string">],</span> <span class="number">16</span><span class="string">,</span> <span class="number">-722521979</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">6</span><span class="string">],</span> <span class="number">23</span><span class="string">,</span> <span class="number">76029189</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">c(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">c(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">c(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">9</span><span class="string">],</span> <span class="number">4</span><span class="string">,</span> <span class="number">-640364487</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">12</span><span class="string">],</span> <span class="number">11</span><span class="string">,</span> <span class="number">-421815835</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">15</span><span class="string">],</span> <span class="number">16</span><span class="string">,</span> <span class="number">530742520</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">2</span><span class="string">],</span> <span class="number">23</span><span class="string">,</span> <span class="number">-995338651</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">f(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">f(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">f(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e],</span> <span class="number">6</span><span class="string">,</span> <span class="number">-198630844</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">7</span><span class="string">],</span> <span class="number">10</span><span class="string">,</span> <span class="number">1126891415</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">14</span><span class="string">],</span> <span class="number">15</span><span class="string">,</span> <span class="number">-1416354905</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">5</span><span class="string">],</span> <span class="number">21</span><span class="string">,</span> <span class="number">-57434055</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">f(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">f(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">f(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">12</span><span class="string">],</span> <span class="number">6</span><span class="string">,</span> <span class="number">1700485571</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">3</span><span class="string">],</span> <span class="number">10</span><span class="string">,</span> <span class="number">-1894986606</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">10</span><span class="string">],</span> <span class="number">15</span><span class="string">,</span> <span class="number">-1051523</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">1</span><span class="string">],</span> <span class="number">21</span><span class="string">,</span> <span class="number">-2054922799</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">f(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">f(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">f(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">8</span><span class="string">],</span> <span class="number">6</span><span class="string">,</span> <span class="number">1873313359</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">15</span><span class="string">],</span> <span class="number">10</span><span class="string">,</span> <span class="number">-30611744</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">6</span><span class="string">],</span> <span class="number">15</span><span class="string">,</span> <span class="number">-1560198380</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">13</span><span class="string">],</span> <span class="number">21</span><span class="string">,</span> <span class="number">1309151649</span><span class="string">),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">f(v,</span> <span class="string">m</span> <span class="string">=</span> <span class="string">f(m,</span> <span class="string">l</span> <span class="string">=</span> <span class="string">f(l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">4</span><span class="string">],</span> <span class="number">6</span><span class="string">,</span> <span class="number">-145523070</span><span class="string">),</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">11</span><span class="string">],</span> <span class="number">10</span><span class="string">,</span> <span class="number">-1120210379</span><span class="string">),</span> <span class="string">l,</span> <span class="string">g,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">2</span><span class="string">],</span> <span class="number">15</span><span class="string">,</span> <span class="number">718787259</span><span class="string">),</span> <span class="string">m,</span> <span class="string">l,</span> <span class="string">n[e</span> <span class="string">+</span> <span class="number">9</span><span class="string">],</span> <span class="number">21</span><span class="string">,</span> <span class="number">-343485551</span><span class="string">),</span> <span class="string">l</span> <span class="string">=</span> <span class="string">t(l,</span> <span class="string">i),</span> <span class="string">g</span> <span class="string">=</span> <span class="string">t(g,</span> <span class="string">a),</span> <span class="string">v</span> <span class="string">=</span> <span class="string">t(v,</span> <span class="string">d),</span> <span class="string">m</span> <span class="string">=</span> <span class="string">t(m,</span> <span class="string">h);</span></span><br><span class="line">        <span class="string">return</span> <span class="string">[l,</span> <span class="string">g,</span> <span class="string">v,</span> <span class="string">m]</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">function</span> <span class="string">a(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">t,</span> <span class="string">r</span> <span class="string">=</span> <span class="string">""</span><span class="string">,</span></span><br><span class="line">            <span class="string">e</span> <span class="string">=</span> <span class="number">32</span> <span class="string">*</span> <span class="string">n.length;</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(t</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">t</span> <span class="string">&lt;</span> <span class="string">e;</span> <span class="string">t</span> <span class="string">+=</span> <span class="number">8</span><span class="string">)</span> <span class="string">r</span> <span class="string">+=</span> <span class="string">String.fromCharCode(n[t</span> <span class="string">&gt;&gt;</span> <span class="number">5</span><span class="string">]</span> <span class="string">&gt;&gt;&gt;</span> <span class="string">t</span> <span class="string">%</span> <span class="number">32</span> <span class="string">&amp;</span> <span class="number">255</span><span class="string">);</span></span><br><span class="line">        <span class="string">return</span> <span class="string">r</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">function</span> <span class="string">d(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">t,</span> <span class="string">r</span> <span class="string">=</span> <span class="string">[];</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(r[(n.length</span> <span class="string">&gt;&gt;</span> <span class="number">2</span><span class="string">)</span> <span class="bullet">-</span> <span class="number">1</span><span class="string">]</span> <span class="string">=</span> <span class="string">void</span> <span class="number">0</span><span class="string">,</span> <span class="string">t</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">t</span> <span class="string">&lt;</span> <span class="string">r.length;</span> <span class="string">t</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">r[t]</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">e</span> <span class="string">=</span> <span class="number">8</span> <span class="string">*</span> <span class="string">n.length;</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(t</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">t</span> <span class="string">&lt;</span> <span class="string">e;</span> <span class="string">t</span> <span class="string">+=</span> <span class="number">8</span><span class="string">)</span> <span class="string">r[t</span> <span class="string">&gt;&gt;</span> <span class="number">5</span><span class="string">]</span> <span class="string">|=</span> <span class="string">(255</span> <span class="string">&amp;</span> <span class="string">n.charCodeAt(t</span> <span class="string">/</span> <span class="number">8</span><span class="string">))</span> <span class="string">&lt;&lt;</span> <span class="string">t</span> <span class="string">%</span> <span class="number">32</span><span class="string">;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">r</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">function</span> <span class="string">h(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">a(i(d(n),</span> <span class="number">8</span> <span class="string">*</span> <span class="string">n.length))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">function</span> <span class="string">l(n,</span> <span class="string">t)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">r,</span> <span class="string">e,</span> <span class="string">o</span> <span class="string">=</span> <span class="string">d(n),</span></span><br><span class="line">            <span class="string">u</span> <span class="string">=</span> <span class="string">[],</span></span><br><span class="line">            <span class="string">c</span> <span class="string">=</span> <span class="string">[];</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(u[15]</span> <span class="string">=</span> <span class="string">c[15]</span> <span class="string">=</span> <span class="string">void</span> <span class="number">0</span><span class="string">,</span> <span class="string">o.length</span> <span class="string">&gt;</span> <span class="number">16</span> <span class="string">&amp;&amp;</span> <span class="string">(o</span> <span class="string">=</span> <span class="string">i(o,</span> <span class="number">8</span> <span class="string">*</span> <span class="string">n.length)),</span> <span class="string">r</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">r</span> <span class="string">&lt;</span> <span class="number">16</span><span class="string">;</span> <span class="string">r</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">u[r]</span> <span class="string">=</span> <span class="number">909522486</span> <span class="string">^</span> <span class="string">o[r],</span> <span class="string">c[r]</span> <span class="string">=</span> <span class="number">1549556828</span> <span class="string">^</span> <span class="string">o[r];</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e</span> <span class="string">=</span> <span class="string">i(u.concat(d(t)),</span> <span class="number">512</span> <span class="string">+</span> <span class="number">8</span> <span class="string">*</span> <span class="string">t.length),</span> <span class="string">a(i(c.concat(e),</span> <span class="number">640</span><span class="string">))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">function</span> <span class="string">g(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">var</span> <span class="string">t,</span> <span class="string">r,</span> <span class="string">e</span> <span class="string">=</span> <span class="string">""</span><span class="string">;</span></span><br><span class="line">        <span class="string">for</span> <span class="string">(r</span> <span class="string">=</span> <span class="number">0</span><span class="string">;</span> <span class="string">r</span> <span class="string">&lt;</span> <span class="string">n.length;</span> <span class="string">r</span> <span class="string">+=</span> <span class="number">1</span><span class="string">)</span> <span class="string">t</span> <span class="string">=</span> <span class="string">n.charCodeAt(r),</span> <span class="string">e</span> <span class="string">+=</span> <span class="string">"0123456789abcdef"</span><span class="string">.charAt(t</span> <span class="string">&gt;&gt;&gt;</span> <span class="number">4</span> <span class="string">&amp;</span> <span class="number">15</span><span class="string">)</span> <span class="string">+</span> <span class="string">"0123456789abcdef"</span><span class="string">.charAt(15</span> <span class="string">&amp;</span> <span class="string">t);</span></span><br><span class="line">        <span class="string">return</span> <span class="string">e</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">v(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">unescape(encodeURIComponent(n))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">m(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">h(v(n))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">p(n)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">g(m(n))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">s(n,</span> <span class="string">t)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">l(v(n),</span> <span class="string">v(t))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">C(n,</span> <span class="string">t)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">g(s(n,</span> <span class="string">t))</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">function</span> <span class="string">A(n,</span> <span class="string">t,</span> <span class="string">r)</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">t</span> <span class="string">?</span> <span class="string">r</span> <span class="string">?</span> <span class="string">s(t,</span> <span class="string">n)</span> <span class="string">:</span> <span class="string">C(t,</span> <span class="string">n)</span> <span class="string">:</span> <span class="string">r</span> <span class="string">?</span> <span class="string">m(n)</span> <span class="string">:</span> <span class="string">p(n)</span></span><br><span class="line">    <span class="string">&#125;</span></span><br><span class="line">    <span class="string">"function"</span> <span class="string">==</span> <span class="string">typeof</span> <span class="string">define</span> <span class="string">&amp;&amp;</span> <span class="string">define.amd</span> <span class="string">?</span> <span class="string">define(function()</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="string">return</span> <span class="string">A</span></span><br><span class="line">    <span class="string">&#125;)</span> <span class="string">:</span> <span class="string">"object"</span> <span class="string">==</span> <span class="string">typeof</span> <span class="string">module</span> <span class="string">&amp;&amp;</span> <span class="string">module.exports</span> <span class="string">?</span> <span class="string">module.exports</span> <span class="string">=</span> <span class="attr">A :</span> <span class="string">n.md5</span> <span class="string">=</span> <span class="string">A</span></span><br><span class="line"><span class="string">&#125;(this);</span></span><br><span class="line"><span class="string">//#</span> <span class="string">sourceMappingURL=md5.min.js.map</span></span><br></pre></td></tr></table></figure>
+<h3><span id="在文章后面加入代码">在文章后面加入代码</span></h3>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitalk-container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/md5.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> &gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> gitalk = <span class="keyword">new</span> Gitalk(&#123;</span></span><br><span class="line"><span class="actionscript">  clientID: <span class="string">'GitHub Application Client ID'</span>,</span></span><br><span class="line"><span class="actionscript">  clientSecret: <span class="string">'GitHub Application Client Secret'</span>,</span></span><br><span class="line"><span class="actionscript">  repo: <span class="string">'GitHub repo'</span>,</span></span><br><span class="line"><span class="actionscript">  owner: <span class="string">'GitHub repo owner'</span>,</span></span><br><span class="line"><span class="actionscript">  admin: [<span class="string">'GitHub repo owner and collaborators, only these guys can initialize github issues'</span>],</span></span><br><span class="line"><span class="actionscript">  id: md5(location.pathname),      <span class="comment">// Ensure uniqueness and length less than 50</span></span></span><br><span class="line"><span class="actionscript">  distractionFreeMode: <span class="literal">false</span>  <span class="comment">// Facebook-like distraction free mode</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="actionscript">gitalk.render(<span class="string">'gitalk-container'</span>)</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>clientID: 前面注册的clientID<br>
+clientSecret： 前面注册的clientSecret<br>
+repo： 保存评论的仓库名字，<a href="http://xn--XXX-vs9dj4u7u4a.github.io" target="_blank" rel="noopener">可以是XXX.github.io</a><br>
+owner： 仓库的拥有者，写自己的用户名就可以。<br>
+admin： 评论管理员，写自己的用户名就可以。<br>
+id： 按我写的不需要修改。一定要使用md5编码，不然会因为文章名字过长报错。<br>
+其他保持默认即可。</p>
+<h3><span id="gitalk初始化">gitalk初始化</span></h3>
+<p>将代码放到文章下方后，需要对gitalk初始化，gitalk不能自动初始化，手动初始化后，会在保存评论的仓库新建一个issue。<br>
+<img src="4.png" alt><br>
+使用自己的github登录。会在仓库新建一个issue。</p>
+<hr>
+<p>这样就完成啦，比较简单。但是需要在每篇文章后面都加入代码，而且需要手动初始化。<br>
+可以在主题中加入gitalk，但是因为主题不同加入的方法也不同。<br>
+至于初始化，可以写个脚本自动初始化，正在学习中，后期和大家分享。如果大家有更好的方法，欢迎在评论中交流。</p>
+<hr>
+<p>参考文章：<br>
+<a href="https://blog.csdn.net/am290333566/article/details/83714217" target="_blank" rel="noopener">https://blog.csdn.net/am290333566/article/details/83714217</a><br>
+<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/blob/master/readme-cn.md</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: '30ef5ef3ee69767d3c66',
+  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
+  repo: 'ccbirds.github.io',
+  owner: 'ccbirds',
+  admin: ['ccbirds'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/02/27/手机无线投屏win10/" data-toggle="tooltip" data-placement="top" title="手机无线投屏win10">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1.注册</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.配置gitalk</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">创建md5.min.js文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">在文章后面加入代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">gitalk初始化</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                        
+                          <a class="tag" href="/tags/#gitalk" title="gitalk">gitalk</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://me.csdn.net/weixin_43662543" target="_blank">CSDN</a></li>
+                    
+                        <li><a href="https://www.jianshu.com/u/d14cd088e5a6" target="_blank">简书</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/ccbirds">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; ccbirds 2020 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite-url/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://yoursite-url/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
