@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ubuntu中使用pycharm有些快捷键无法使用 - ccbirds
+          nanopi_neo2_black_防烧屏设置 - ccbirds
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2020/02/27/ubuntu中使用pycharm有些快捷键无法使用/">
+    <link rel="canonical" href="http://yoursite-url/2020/02/28/nanopi-neo2-black-防烧屏设置/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -86,18 +86,18 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                            
                               <a class="tag" href="/tags/#python" title="python">python</a>
                             
-                              <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
-                            
-                              <a class="tag" href="/tags/#pcharm" title="pcharm">pcharm</a>
+                              <a class="tag" href="/tags/#oled" title="oled">oled</a>
                             
                         </div>
-                        <h1>ubuntu中使用pycharm有些快捷键无法使用</h1>
+                        <h1>nanopi_neo2_black_防烧屏设置</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by ccbirds on
-                            2020-02-27
+                            2020-02-28
                         </span>
                     </div>
                 
@@ -214,15 +214,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。</p>
-<p>解决办法：file-&gt;setting-&gt;Editor下面有一个Vim Emulation选项。</p>
-<p><img src="1.png" alt="VIm Emulation"><br>
-将Handler一列中的vim全部改为IDE，点Apply。</p>
-<p><img src="2.png" alt="VIm Emulation"><br>
-这样，快捷键就可以正常使用啦。</p>
-<h6><span id="链接">链接：</span></h6>
-<p><a href="https://blog.csdn.net/weixin_43662543/article/details/104069020" target="_blank" rel="noopener">CSDN</a><br>
-<a href="https://www.jianshu.com/p/f8779d6bd387" target="_blank" rel="noopener">简书</a></p>
+                <p>oled长时间点亮一个点，付出现烧屏现象，为了避免烧屏。我们将oled设置为闪屏。</p>
+<hr>
+<p>关于oled模块驱动的安装，可以参考<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoHat_OLED" target="_blank" rel="noopener">官方文档</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/friendlyarm/NanoHatOLED.git</span><br><span class="line">$ <span class="built_in">cd</span> NanoHatOLED</span><br><span class="line">$ sudo -H ./install.sh</span><br></pre></td></tr></table></figure>
+<hr>
+<h4><span id="cd到oled源文件目录修改两个文件">cd到oled源文件目录,修改两个文件</span></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /root/NanoHatOLED/BakeBit/Software/Python</span><br><span class="line">//使用python控制</span><br><span class="line">$ sudo vim bakebit_nanohat_oled.py</span><br><span class="line">//加入一条语句</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    try:        </span><br><span class="line">        oled.clear_raw() //加入这个语句，其他语句不变</span><br><span class="line">        draw_page()</span><br><span class="line">        lock.acquire()</span><br><span class="line">        page_index = pageIndex</span><br><span class="line">        lock.release()</span><br><span class="line">   </span><br><span class="line">$ sudo vim bakebit_128_64_oled.py</span><br><span class="line">//加入下面的函数</span><br><span class="line">def clear_raw():</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(8):</span><br><span class="line">        setTextXY(0,j)    </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(16):  <span class="comment">#clear all columns</span></span><br><span class="line">            putChar(<span class="string">' '</span>)</span><br></pre></td></tr></table></figure>
+<h4><span id="清除原进程启动新进程">清除原进程，启动新进程</span></h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | grep python //查看进程</span><br><span class="line">root     25913  3.8  1.4  22380 14648 pts/0    S    14:23   0:35 python bakebit_nanohat_oled.py</span><br><span class="line">pi       26617  0.0  0.0   7284   544 pts/0    S+   14:39   0:00 grep --color=auto python</span><br><span class="line">$ sudo pkill -f python bakebit_nanohat_oled.py </span><br><span class="line">//结束进程</span><br><span class="line">$ sudo python python bakebit_nanohat_oled.py</span><br><span class="line">// 重启进程 </span><br><span class="line">$ sudo python python bakebit_nanohat_oled.py &amp;</span><br><span class="line">// 重启进程 后台运行</span><br></pre></td></tr></table></figure>
+<hr>
+<p>这样就不会烧屏了！</p>
 <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -246,13 +248,9 @@ gitalk.render('gitalk-container')
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2020/02/27/手机无线投屏win10/" data-toggle="tooltip" data-placement="top" title="手机无线投屏win10">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                            <a href="/2020/02/28/nanopi-neo2-black-音乐闹钟/" data-toggle="tooltip" data-placement="top" title="nanopi neo2 black 音乐闹钟">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -278,7 +276,7 @@ gitalk.render('gitalk-container')
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">链接：</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">cd到oled源文件目录,修改两个文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">清除原进程，启动新进程</span></a></li></ol>
         
         </div>
       </aside>
@@ -298,11 +296,11 @@ gitalk.render('gitalk-container')
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                        
                           <a class="tag" href="/tags/#python" title="python">python</a>
                         
-                          <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
-                        
-                          <a class="tag" href="/tags/#pcharm" title="pcharm">pcharm</a>
+                          <a class="tag" href="/tags/#oled" title="oled">oled</a>
                         
                     </div>
                 </section>
