@@ -58,29 +58,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite-url/tags/%E9%9F%B3%E4%B9%90%E9%97%B9%E9%92%9F/</loc>
-        <lastmod>2020-02-28T02:38:33.328Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite-url/tags/ubuntu/</loc>
-        <lastmod>2020-02-28T11:23:24.650Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://yoursite-url/tags/SSH/</loc>
         <lastmod>2020-02-28T11:23:24.650Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://yoursite-url/tags/nanopi/</loc>
-        <lastmod>2020-02-28T11:23:57.278Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -95,6 +74,27 @@
     <url>
         <loc>http://yoursite-url/tags/oled/</loc>
         <lastmod>2020-02-28T11:23:57.278Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/tags/nanopi/</loc>
+        <lastmod>2020-02-28T12:31:10.372Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/tags/ubuntu/</loc>
+        <lastmod>2020-02-28T12:31:10.372Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/tags/%E9%9F%B3%E4%B9%90%E9%97%B9%E9%92%9F/</loc>
+        <lastmod>2020-02-28T12:31:10.372Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -229,7 +229,7 @@
 <p>可以先播放一个音乐试试</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ play XXX.mp3</span><br></pre></td></tr></table></figure>
 <p>设置定时播放音乐</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以</span><br><span class="line">//在文件末尾加</span><br><span class="line">30 21 * * * aplay /home/pi/Music/XXX.mp3</span><br><span class="line">//每天21:30播放音乐XXX.mp3</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以</span><br><span class="line">//在文件末尾加</span><br><span class="line">30 21 * * * play /home/pi/Music/XXX.mp3</span><br><span class="line">//每天21:30播放音乐XXX.mp3</span><br></pre></td></tr></table></figure>
 <p>五个* * * * *<br>
 对应的分别是 分 时 天 月 周<br>
 重启一个cron服务就可以了</p>

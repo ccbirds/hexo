@@ -43,7 +43,7 @@ $ play XXX.mp3
 ```bash
 $ crontab -e //第一次使用会让你选择编辑器，选择vim就可以
 //在文件末尾加
-30 21 * * * aplay /home/pi/Music/XXX.mp3
+30 21 * * * play /home/pi/Music/XXX.mp3
 //每天21:30播放音乐XXX.mp3
 ```
 五个* * * * *
