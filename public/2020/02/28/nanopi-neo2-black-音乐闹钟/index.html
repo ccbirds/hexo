@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          ccbirds
+          nanopi neo2 black 音乐闹钟 - ccbirds
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/tags/Blog/">
+    <link rel="canonical" href="http://yoursite-url/2020/02/28/nanopi-neo2-black-音乐闹钟/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/undefined')
-            /*page*/
+            background-image: url('Demo.png')
+            /*post*/
         
     }
     
@@ -83,10 +83,22 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>ccbirds blog</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">ccbirds blog</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                            
+                              <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                            
+                              <a class="tag" href="/tags/#音乐闹钟" title="音乐闹钟">音乐闹钟</a>
+                            
+                        </div>
+                        <h1>nanopi neo2 black 音乐闹钟</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by ccbirds on
+                            2020-02-28
+                        </span>
                     </div>
                 
 
@@ -189,319 +201,180 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <p>nanopi neo2 black 有音频接口，可以用它来放个音乐，折腾一下做个音乐闹钟吧。</p>
+<hr>
+<h3><span id="首先查看cron是否运行">首先查看cron是否运行</span></h3>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ps -ef | grep cron //查看cron是否运行</span><br><span class="line">root       561     1  0 15:52 ?        00:00:00 /usr/sbin/cron -f</span><br><span class="line">pi       18668 18655  0 21:07 pts/0    00:00:00 grep --color=auto cron</span><br></pre></td></tr></table></figure>
+<p>没有运行的话，启动一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service cron start //启动命令</span><br><span class="line">$ sudo service cron stop  //停止命令</span><br><span class="line">$ sudo service cron restart  //重启命令</span><br></pre></td></tr></table></figure>
+<hr>
+<h3><span id="设置定时播放音乐">设置定时播放音乐</span></h3>
+<hr>
+<p>安装sox用来播放mp3音乐</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install sox libsox-fmt-all</span><br><span class="line">//libsox-fmt-all包含解码器</span><br></pre></td></tr></table></figure>
+<p>可以先播放一个音乐试试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ play XXX.mp3</span><br></pre></td></tr></table></figure>
+<p>设置定时播放音乐</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -e //第一次使用会让你选择编辑器，选择vim就可以</span><br><span class="line">//在文件末尾加</span><br><span class="line">30 21 * * * aplay /home/pi/Music/XXX.mp3</span><br><span class="line">//每天21:30播放音乐XXX.mp3</span><br></pre></td></tr></table></figure>
+<p>五个* * * * *<br>
+对应的分别是 分 时 天 月 周<br>
+重启一个cron服务就可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service cron restart</span><br><span class="line">$ service cron restart</span><br></pre></td></tr></table></figure>
+<hr>
+<p>大家每天定时听音乐吧！</p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: '30ef5ef3ee69767d3c66',
+  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
+  repo: 'ccbirds.github.io',
+  owner: 'ccbirds',
+  admin: ['ccbirds'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-                    <span class="tag-text">2020</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-28
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/28/nanopi-neo2-black-音乐闹钟/" style="color: #0085a1">
-                        <span>
-                            nanopi neo2 black 音乐闹钟
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/27/nanopi-neo2-black-上电使用/" style="color: #0085a1">
-                        <span>
-                            nanopi neo2 black 上电使用
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/27/ubuntu下将文件备份到github/" style="color: #0085a1">
-                        <span>
-                            ubuntu下将文件备份到github
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/27/为使用hexo搭建的博客加入评论系统gitalk/" style="color: #0085a1">
-                        <span>
-                            为使用hexo搭建的博客加入评论系统gitalk
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/27/手机无线投屏win10/" style="color: #0085a1">
-                        <span>
-                            手机无线投屏win10
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    02-27
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2020/02/27/ubuntu中使用pycharm有些快捷键无法使用/" style="color: #0085a1">
-                        <span>
-                            ubuntu中使用pycharm有些快捷键无法使用
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2020/02/27/nanopi-neo2-black-上电使用/" data-toggle="tooltip" data-placement="top" title="nanopi neo2 black 上电使用">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
             </div>
             
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2017">
-                    <span class="tag-text">2017</span>
-                </span>
-                <ul>
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">首先查看cron是否运行</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">设置定时播放音乐</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-18
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2017/03/18/hexo-theme-beantech/" style="color: #0085a1">
-                        <span>
-                            [Hexo] Theme BeanTech
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
                 
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
+                        
+                          <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                          <a class="tag" href="/tags/#音乐闹钟" title="音乐闹钟">音乐闹钟</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://me.csdn.net/weixin_43662543" target="_blank">CSDN</a></li>
+                    
+                        <li><a href="https://www.jianshu.com/u/d14cd088e5a6" target="_blank">简书</a></li>
+                    
                 </ul>
+                
             </div>
-            
-
-
         </div>
     </div>
-</div>
+</article>
 
-                <!-- 如果开启评论功能 -->
-                
-            </div>
 
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
 
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-        
-            
-            <a href="/tags/#nanopi" title="nanopi" rel="2">nanopi</a>
-            
-        
-            
-            <a href="/tags/#ubuntu" title="ubuntu" rel="4">ubuntu</a>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </div>
-</section>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/theme.png" />
-        
 
-        
-            <p>Hi, i&#39;m ccbirds</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-            
-
-            
-
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/ccbirds">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2020/02/28/nanopi-neo2-black-音乐闹钟/">nanopi neo2 black 音乐闹钟</a>
-        </li>
-      
-        <li>
-          <a href="/2020/02/27/nanopi-neo2-black-上电使用/">nanopi neo2 black 上电使用</a>
-        </li>
-      
-        <li>
-          <a href="/2020/02/27/ubuntu下将文件备份到github/">ubuntu下将文件备份到github</a>
-        </li>
-      
-        <li>
-          <a href="/2020/02/27/为使用hexo搭建的博客加入评论系统gitalk/">为使用hexo搭建的博客加入评论系统gitalk</a>
-        </li>
-      
-        <li>
-          <a href="/2020/02/27/手机无线投屏win10/">手机无线投屏win10</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="https://me.csdn.net/weixin_43662543" target="_blank">CSDN</a></li>
-    
-        <li><a href="https://www.jianshu.com/u/d14cd088e5a6" target="_blank">简书</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Categories -->
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
