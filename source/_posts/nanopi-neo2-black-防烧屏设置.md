@@ -48,11 +48,11 @@ def clear_raw():
 $ ps aux | grep python //查看进程
 root     25913  3.8  1.4  22380 14648 pts/0    S    14:23   0:35 python bakebit_nanohat_oled.py
 pi       26617  0.0  0.0   7284   544 pts/0    S+   14:39   0:00 grep --color=auto python
-$ sudo pkill -f python bakebit_nanohat_oled.py 
+$ sudo pkill -f bakebit_nanohat_oled.py 
 //结束进程
-$ sudo python python bakebit_nanohat_oled.py
+$ sudo python bakebit_nanohat_oled.py
 // 重启进程 
-$ sudo python python bakebit_nanohat_oled.py &
+$ sudo python bakebit_nanohat_oled.py &
 // 重启进程 后台运行
 ```
 

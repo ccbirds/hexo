@@ -44,7 +44,7 @@ $ nmcli dev wifi connect "SSID" password "PASSWORD" ifname wlan0 //连接无线�
 ---
 更改更新源为国内源
 ```bash
-$ sudo vim /etc/apt/source.list
+$ sudo vim /etc/apt/sources.list
 //加入以下源
 deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe
 deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe
