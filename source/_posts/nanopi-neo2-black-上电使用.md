@@ -105,3 +105,25 @@ var gitalk = new Gitalk({
 gitalk.render('gitalk-container')
 </script>
 
+
+<head>
+    ..
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    ...
+</head>
+<body>
+    ...
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+	    appId: 'vXidTKzEclYBf4IxomY5Vqo5-gzGzoHsz',
+    	    appKey: 'YYe3hk4yLV5lQ3M5oO7tHE6t',
+            notify:false, 
+            verify:false, 
+            avatar:'mp', 
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊' 
+        })
+    </script>
+</body>
+

@@ -86,9 +86,9 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#python" title="python">python</a>
-                            
                               <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                            
+                              <a class="tag" href="/tags/#python" title="python">python</a>
                             
                               <a class="tag" href="/tags/#pcharm" title="pcharm">pcharm</a>
                             
@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -239,6 +239,26 @@ var gitalk = new Gitalk({
 })
 gitalk.render('gitalk-container')
 </script>
+<head><meta name="generator" content="Hexo 3.9.0">
+    ..
+    <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+    ...
+</head>
+<body>
+    ...
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+	    appId: 'vXidTKzEclYBf4IxomY5Vqo5-gzGzoHsz',
+    	    appKey: 'YYe3hk4yLV5lQ3M5oO7tHE6t',
+            notify:false, 
+            verify:false, 
+            avatar:'mp', 
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊' 
+        })
+    </script>
+</body>
 
                 
 
@@ -266,6 +286,10 @@ gitalk.render('gitalk-container')
                 <!-- 多说评论框 end -->
 
                 <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
                 
                 <!-- disqus comment end -->
             </div>
@@ -298,9 +322,9 @@ gitalk.render('gitalk-container')
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#python" title="python">python</a>
-                        
                           <a class="tag" href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
+                        
+                          <a class="tag" href="/tags/#python" title="python">python</a>
                         
                           <a class="tag" href="/tags/#pcharm" title="pcharm">pcharm</a>
                         
@@ -328,6 +352,21 @@ gitalk.render('gitalk-container')
 
 
 
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "ccbirds";
+    var disqus_identifier = "http://yoursite-url/2020/02/27/ubuntu中使用pycharm有些快捷键无法使用/";
+    var disqus_url = "http://yoursite-url/2020/02/27/ubuntu中使用pycharm有些快捷键无法使用/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
 
 
 
