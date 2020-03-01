@@ -3,7 +3,7 @@ title: "markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床
 catalog: true
 date: 2020-03-01 14:51:24
 subtitle: 
-header-img: "Demo.png"
+header-img: "https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/Demo.png"
 tags:
 - 图床
 - typroa

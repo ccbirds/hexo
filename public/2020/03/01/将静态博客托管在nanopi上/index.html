@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床 - ccbirds
+          将静态博客托管在nanopi上 - ccbirds
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/">
+    <link rel="canonical" href="http://yoursite-url/2020/03/01/将静态博客托管在nanopi上/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -86,20 +86,12 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#图床" title="图床">图床</a>
+                              <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
                             
-                              <a class="tag" href="/tags/#typroa" title="typroa">typroa</a>
-                            
-                              <a class="tag" href="/tags/#picgo" title="picgo">picgo</a>
-                            
-                              <a class="tag" href="/tags/#github 图床" title="github 图床">github 图床</a>
-                            
-                              <a class="tag" href="/tags/#坚果云" title="坚果云">坚果云</a>
-                            
-                              <a class="tag" href="/tags/#云笔记" title="云笔记">云笔记</a>
+                              <a class="tag" href="/tags/#博客托管" title="博客托管">博客托管</a>
                             
                         </div>
-                        <h1>markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床</h1>
+                        <h1>将静态博客托管在nanopi上</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by ccbirds on
@@ -220,95 +212,32 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>平时在弄一些东西想记一些笔记，要不等弄完也就弄完了，几乎忘了怎么弄的，最好用笔记记录一下。首先尝试了一下印象笔记，免费用户可以两个设备同步，每个月还有流量限制，主要是照片比较多，一个月的流量很可能不来够，果断放弃。</p>
-<p>考虑用markdown来记录一些东西，因为写博客也是用的markdown，写点代码什么的比较方便。上网搜了一下，使用typroa和坚果云可以实现云同步。typroa界面十分简洁清爽，非常舒服。坚果云的空间没有其他网盘大，但主打的是同步，每个月有1G的上传和3G的下载，对于只是同步 一下md文档，完全够用了。可是又有一个新的问题。图片怎么办？对于我这个时不时就截图的人来说，这个问题很致命。很巧typroa支持使用picgo上传图片。picgo是一个上传图片到图床的一个软件。图床的选择，免费的是Github，不过毕竟是免费的，大家都懂，七牛云，据说用的比较多，不过因为域名只能用一段时间，这后就需要使用自己备案过的域名，感觉不方便，所以考虑到阿里云和腾讯云，比较了一下，价钱的话差不多，实际上都用不了多少钱。个人感觉阿里云做的比较好。所以使用typora+坚果云+picgo+github图床+阿里云图床。这样即解决了笔记问题也解决了博客图床的问题。</p>
-<p>最重要的是typroa、坚果云、picgo都是支持windows macos 和linux。</p>
-<p>下面以windows为例介绍一下。</p>
+                <p>最近买了一个nanopi，里面运行的是Ubuntu，可以做很多事情，我便想到用来做我博客的服务器。这前我是把我的博客托管在Github上。Github在国内的速度还是比较慢的。而且以前有被墙过。</p>
 <hr>
-<h3><span id="typroa">typroa</span></h3>
+<p>在nanopi上安装nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<p>编辑nginx的设置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>在http里面加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">                listen          80 default_server;</span><br><span class="line">                server_name     ccbirds.cn;//自己的域名</span><br><span class="line">                root            /home/fa/hexo-blog; //<span class="built_in">clone</span>下来的位置</span><br><span class="line">                location / &#123;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        server &#123;</span><br><span class="line">                listen          80;</span><br><span class="line">                server_name     www.ccbirds.cn;</span><br><span class="line">                <span class="built_in">return</span>          301 http://ccbirds.cn<span class="variable">$request_uri</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>开启nginx服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service nginx start  //启动命令</span><br><span class="line">$ sudo service nginx stop   //停止命令</span><br><span class="line">$ sudo service nginx restart  //重启命令</span><br></pre></td></tr></table></figure>
+<p>如果报错，根据提示查看报错原因，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo nginx -t  //查看配置文件是否有问题</span><br><span class="line">$ ps -ef | grep nginx  //显示nginx的进程</span><br><span class="line">$ sudo <span class="built_in">kill</span> -quit 14952  //杀死进程</span><br></pre></td></tr></table></figure>
+<p>现在使用IP或者域名就可以访问了。</p>
 <hr>
-<p><a href="https://typora.io/" target="_blank" rel="noopener">下载地址</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroadownload.png" alt></p>
-<p>选择对应的版本，下载安装。</p>
-<p>安装后，打开 文件-&gt;偏好设置-&gt;图像</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-img1.png" alt></p>
-<p>选择上传图片，上传服务选择PicGo（app），路径选择一会安装PicGo的路径。</p>
-<p>其他设置，大家可以根据自己的喜好设置。</p>
+<p>可是每次更新博客都要手动clone一下吗？</p>
+<p>网上有使用webhooks自动部署的方法，不过本人比较笨，没有弄好，感兴趣的可以试试，成功了记得告诉我一声。</p>
+<p>我采用了比较笨的一种方法，每天定时删除hexo-log，定时重新clone一次。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ crontab -e </span><br><span class="line">//在最后加上两句</span><br><span class="line">0 0 * * * sudo rm -rf /home/fa/hexo-blog  //每天零点删除hexo-blog</span><br><span class="line">5 0 * * * sudo git <span class="built_in">clone</span> https://github.com/ccbirds/ccbirds.github.io.git /home/fa/hexo-blog  //每天零点五分 重新<span class="built_in">clone</span></span><br><span class="line">$ sudo service cron restart  //重启cron</span><br><span class="line">$ service cron restart</span><br></pre></td></tr></table></figure>
+<p>五个* * * * *<br>
+对应的分别是 分 时 天 月 周</p>
+<p>不是很完美，先这样吧。</p>
 <hr>
-<h3><span id="坚果云">坚果云</span></h3>
+<p>遇到的问题：</p>
+<p>启动nginx时，报错，80端口已经被占用，看了一下进程，发现是nginx自己占用了80端口。使用nginx -t 看一下问题，是/etc/nginx/sites-enabled/default这个也在使用80端口，把这里的80改成其他端口就没有问题了</p>
 <hr>
-<p><a href="https://www.jianguoyun.com/s/downloads" target="_blank" rel="noopener">下载地址</a></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8B%E8%BD%BD.png" alt></p>
-<p>选择对应的版本下载，安装（安装过程没有截图，大家按照提示安装就可以）。最后把typroa的md文件保存在坚果云的同步文件夹下就可以了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/%E5%9D%9A%E6%9E%9C%E4%BA%91%E5%90%8C%E6%AD%A5.png" alt></p>
-<hr>
-<h3><span id="picgo">PicGo</span></h3>
-<hr>
-<p><a href="https://molunerfinn.com/PicGo/" target="_blank" rel="noopener">下载地址</a></p>
-<p>picgo是Github开源项目，大家下载自己需要的版本，其他平台大家可以参考文档安装。windows选择exe文件。安装后启动，刚开始不会有界面，右下角图标单击或者右键可以打开界面。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo%E2%80%94download.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo1.png" alt></p>
-<p>到这里不要忘了去typroa上找一下picgo的安装路径。</p>
-<hr>
-<h3><span id="github图床">Github图床</span></h3>
-<hr>
-<p><a href="https://github.com/" target="_blank" rel="noopener">github.com</a></p>
-<p>新建一个仓库，用做图床。（一定要公开不要私密，要不别人看不到图片）</p>
-<p>setting-&gt;developer setting-&gt;personal access tokens</p>
-<p>点generate new token</p>
-<p>note 随便填，下面不知道每个选项都是什么意思，跟我一样全选上。</p>
-<p>最后generate token</p>
-<p>记住生成的token秘钥，</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting2.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting3.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/github_setting4.png" alt></p>
-<hr>
-<p>打开picgo，选择Github图床。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-github.png" alt></p>
-<p>仓库名：用户名/仓库名</p>
-<p>分支名：master</p>
-<p>token：刚才生成的token秘钥</p>
-<p>存储路径：是仓库下新建一个文件夹来作为图床，后面要有/</p>
-<p>自定义域名;<a href="https://raw.githubsercontent.com/%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BB%93%E5%BA%93%E5%90%8D/%E5%88%86%E6%94%AF" target="_blank" rel="noopener">https://raw.githubsercontent.com/用户名/仓库名/分支</a></p>
-<p>点确定即可。Github图床设置完成，可以上传一个图片试试。</p>
-<p>Github主要是免费的，速度什么的就不行了。</p>
-<hr>
-<h3><span id="阿里云图床">阿里云图床</span></h3>
-<hr>
-<p><a href="https://cn.aliyun.com/" target="_blank" rel="noopener">阿里云网址</a></p>
-<p>选择对象存储OSS，或者直接搜索也可以。购买的话，40GB一年才9元，现在买还有折扣，一年7.2元。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss1.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss2.png" alt></p>
-<p>下单后，在控制台找到OSS。进入BUcket列表，创建bucket。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss3.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss5.png" alt></p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss6.png" alt></p>
-<p>bucket的名称大家自己想一个。读写权限改为公共读。</p>
-<p>确定。记住外网的两个域名。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss7.png" alt></p>
-<p>下面来生成key。点击概览，右侧有一个常用入口，下面有一个Access Key。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss8.png" alt></p>
-<p>进入后，点击   创建Accesskey   验证手机，会造成ID和key，最好是保存一下。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/aliyun_oss9.png" alt></p>
-<hr>
-<p>打开picgo，进入阿里云oss设置。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-aliyun.png" alt></p>
-<p>keyid和keysecrect是刚才生成的ID和key。</p>
-<p>存储空间名是bucket的名</p>
-<p>存储区域是全世外网访问节点 <a href="http://xn--aliyuncs-7s0nf91k.com" target="_blank" rel="noopener">去掉aliyuncs.com</a> 前面的一串。</p>
-<p>存储路径什么的大家根据自己的喜好来。</p>
-<hr>
-<h3><span id="问题">问题：</span></h3>
-<p>typroa验证上传时，不成功</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa_upload.png" alt></p>
-<p>原因：应该是typroa的端口与picgo的端口不对应。修改一下picgo的server端口就行。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/picgo-server.png" alt></p>
-<p>测试一下，成功了。</p>
-<p><img src="https://ccbirds-blog.oss-cn-beijing.aliyuncs.com/blog_img/typroa-upload1.png" alt></p>
-<hr>
-<p>到这里就完事了！</p>
+<p>欢迎大家访问！</p>
 <p>博客网站  ：<br>
 <a href="http://ccbirds.cn" target="_blank" rel="noopener">ccbirds.cn</a><br>
 <a href="https://ccbirds.github.io/" target="_blank" rel="noopener">ccbirds.github.io</a></p>
@@ -355,13 +284,9 @@ gitalk.render('gitalk-container')
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2020/03/01/将静态博客托管在nanopi上/" data-toggle="tooltip" data-placement="top" title="将静态博客托管在nanopi上">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2020/02/28/nanopi-neo2-black-防烧屏设置/" data-toggle="tooltip" data-placement="top" title="nanopi_neo2_black_防烧屏设置">Next Post &rarr;</a>
+                            <a href="/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/" data-toggle="tooltip" data-placement="top" title="markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -391,7 +316,7 @@ gitalk.render('gitalk-container')
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">typroa</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">坚果云</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">PicGo</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Github图床</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">阿里云图床</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">问题：</span></a></li></ol>
+          <ol class="nav">none</ol>
         
         </div>
       </aside>
@@ -411,17 +336,9 @@ gitalk.render('gitalk-container')
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#图床" title="图床">图床</a>
+                          <a class="tag" href="/tags/#nanopi" title="nanopi">nanopi</a>
                         
-                          <a class="tag" href="/tags/#typroa" title="typroa">typroa</a>
-                        
-                          <a class="tag" href="/tags/#picgo" title="picgo">picgo</a>
-                        
-                          <a class="tag" href="/tags/#github 图床" title="github 图床">github 图床</a>
-                        
-                          <a class="tag" href="/tags/#坚果云" title="坚果云">坚果云</a>
-                        
-                          <a class="tag" href="/tags/#云笔记" title="云笔记">云笔记</a>
+                          <a class="tag" href="/tags/#博客托管" title="博客托管">博客托管</a>
                         
                     </div>
                 </section>
@@ -452,8 +369,8 @@ gitalk.render('gitalk-container')
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "ccbirds";
-    var disqus_identifier = "http://yoursite-url/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/";
-    var disqus_url = "http://yoursite-url/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/";
+    var disqus_identifier = "http://yoursite-url/2020/03/01/将静态博客托管在nanopi上/";
+    var disqus_url = "http://yoursite-url/2020/03/01/将静态博客托管在nanopi上/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
