@@ -242,22 +242,6 @@ ssh key。title随便写，key 填写id_rsa.pub文件中的内容。<br>
 <h3><span id="6添加文件">6.添加文件</span></h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt //指定一个文件</span><br><span class="line">$ git add .    //目录下的所有文件</span><br><span class="line">$ git commit -m <span class="string">"2020-02-27"</span> //备注</span><br><span class="line">$ git push origin master</span><br><span class="line">Username <span class="keyword">for</span> <span class="string">'https://github.com'</span>: ccbirds //输入用户名</span><br><span class="line">Password <span class="keyword">for</span> <span class="string">'https://ccbirds@github.com'</span>:  //输入密码，密码不会显示</span><br><span class="line">Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, <span class="keyword">done</span>.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/ccbirds/hexo.git</span><br><span class="line">   da79977..341a1a4  master -&gt; master</span><br></pre></td></tr></table></figure>
 <h3><span id="这样就成功啦">这样就成功啦</span></h3>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script>
-<script>
-var gitalk = new Gitalk({
-  clientID: '30ef5ef3ee69767d3c66',
-  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
-  repo: 'ccbirds.github.io',
-  owner: 'ccbirds',
-  admin: ['ccbirds'],
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
 <head><meta name="generator" content="Hexo 3.9.0">
     ..
     <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
@@ -562,6 +546,59 @@ gitalk.render('gitalk-container')
 <!-- Baidu Tongji -->
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<!-- valine -->
+<!-- 
+<head>
+    ..
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    ...
+</head>
+<body>
+    ...
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+	    appId: 'vXidTKzEclYBf4IxomY5Vqo5-gzGzoHsz',
+    	    appKey: 'YYe3hk4yLV5lQ3M5oO7tHE6t',
+            notify:false, 
+            verify:false, 
+            avatar:'mp', 
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊' 
+        })
+    </script>
+</body>
+-->
+
+<!-- gitalk -->
+<!--
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: '30ef5ef3ee69767d3c66',
+  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
+  repo: 'ccbirds.github.io',
+  owner: 'ccbirds',
+  admin: ['ccbirds'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+-->
 
 
 

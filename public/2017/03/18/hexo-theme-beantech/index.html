@@ -269,22 +269,6 @@ Especially the section:</p>
 <!-- Place this tag where you want the button to render. -->
 <p>Please <a class="github-button" href="https://github.com/YenYuHsuan/hexo-theme-beantech" data-icon="octicon-star" aria-label="Star YenYuHsuan/hexo-theme-beantech on GitHub" target="_blank" rel="noopener">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/YenYuHsuan" aria-label="Follow @YenYuHsuan on GitHub" target="_blank" rel="noopener">Follow</a> would also be appreciated!<br>
 Peace!</p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script>
-<script>
-var gitalk = new Gitalk({
-  clientID: '30ef5ef3ee69767d3c66',
-  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
-  repo: 'ccbirds.github.io',
-  owner: 'ccbirds',
-  admin: ['ccbirds'],
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
 <head><meta name="generator" content="Hexo 3.9.0">
     ..
     <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
@@ -583,6 +567,59 @@ gitalk.render('gitalk-container')
 <!-- Baidu Tongji -->
 
 
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+<!-- valine -->
+<!-- 
+<head>
+    ..
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    ...
+</head>
+<body>
+    ...
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments' ,
+	    appId: 'vXidTKzEclYBf4IxomY5Vqo5-gzGzoHsz',
+    	    appKey: 'YYe3hk4yLV5lQ3M5oO7tHE6t',
+            notify:false, 
+            verify:false, 
+            avatar:'mp', 
+            placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊' 
+        })
+    </script>
+</body>
+-->
+
+<!-- gitalk -->
+<!--
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: '30ef5ef3ee69767d3c66',
+  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
+  repo: 'ccbirds.github.io',
+  owner: 'ccbirds',
+  admin: ['ccbirds'],
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+-->
 
 
 

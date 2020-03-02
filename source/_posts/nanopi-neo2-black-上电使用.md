@@ -88,23 +88,6 @@ Upload: 0.76 Mbit/s
 大家可以为所欲为了，哈哈。
 
 
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: '30ef5ef3ee69767d3c66',
-  clientSecret: '89eb8a0b3782e394a2ef7d8901770a7d5327dc23',
-  repo: 'ccbirds.github.io',
-  owner: 'ccbirds',
-  admin: ['ccbirds'],
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
 
 <head>
     ..
