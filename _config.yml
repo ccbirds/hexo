@@ -55,7 +55,7 @@ disqus_username: ccbirds
 # ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
 # Google Analytics
 ga_track_id: 'UA-XXXXXXXX-X'          # Format: UA-xxxxxx-xx
-ga_domain: yoursite
+ga_domain: http://ccbirds.cn
 
 
 # Sidebar settings
@@ -159,17 +159,28 @@ markdown:
     quotes: '“”‘’'
   
 # Extensions
-## Plugins: https://hexo.io/plugins/
+# Plugins: hexo-generator-sitemap
 ## Themes: https://hexo.io/themes/
 theme: beantech
 
 #sitemap
 sitemap:
   path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+#deploy:
+#  type: git
+#  repo: git@github.com:ccbirds/ccbirds.github.io.git,
+	#git@e.coding.net:ccbirds/ccbirds.coding.me.git	
+#  branch: master
+
 deploy:
-  type: git
-  repository: https://github.com/ccbirds/ccbirds.github.io.git
-  branch: master
+  - type: git
+    repo: git@github.com:ccbirds/ccbirds.github.io.git
+    branch: master
+  - type: git
+    repo: git@e.coding.net:ccbirds/ccbirds.coding.me/ccbirds.coding.me.git	
+    branch: master
