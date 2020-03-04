@@ -1,5 +1,5 @@
+http://ccbirds.cn/2020/04/10/nanopi压力测试和散热能力/
 http://ccbirds.cn/2020/03/01/将静态博客托管在nanopi上/
 http://ccbirds.cn/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/
 http://ccbirds.cn/2020/02/28/nanopi-neo2-black-防烧屏设置/
 http://ccbirds.cn/2020/02/28/nanopi-neo2-black-音乐闹钟/
-http://ccbirds.cn/2020/02/27/nanopi-neo2-black-上电使用/
