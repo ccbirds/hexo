@@ -1,5 +1,5 @@
-http://ccbirds.cn/2020/04/10/nanopi压力测试和散热能力/
-http://ccbirds.cn/2020/03/01/将静态博客托管在nanopi上/
-http://ccbirds.cn/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/
-http://ccbirds.cn/2020/02/28/nanopi-neo2-black-防烧屏设置/
-http://ccbirds.cn/2020/02/28/nanopi-neo2-black-音乐闹钟/
+http://ccbirds.cn/2020/03/18/快速重装win10系统/
+http://ccbirds.cn/2020/03/15/论文写作小工具推荐/
+http://ccbirds.cn/2020/03/12/nanopi性能测试UnixBench/
+http://ccbirds.cn/2020/03/10/nanopi安装oh_my_zsh/
+http://ccbirds.cn/2020/03/04/nanopi压力测试和散热能力/

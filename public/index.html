@@ -212,7 +212,149 @@
 
 <div class="post-preview">
 
-    <a href="/2020/04/10/nanopi压力测试和散热能力/">
+    <a href="/2020/03/18/快速重装win10系统/">
+        <h2 class="post-title">
+            快速重装win10系统
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            怎么快速的给自己的电脑重装一个系统？
+
+1、下载win镜像
+
+可以在I Tell You 上下载纯净版win10镜像，https://msdn.itellyou.cn/
+X64为64位的，X86为32位的，正常个人使电脑选择consumer editions。下面为迅雷的链接，打开迅雷就可以下载了。大家根据自己电脑情况下载相应版本。不要把镜像下载到一会要装系统的分区（桌面也是在C盘哦）！
+
+......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by ccbirds on
+            2020-03-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#win10" title="win10">win10</a>
+            
+              <a href="/tags/#系统重装" title="系统重装">系统重装</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/03/15/论文写作小工具推荐/">
+        <h2 class="post-title">
+            论文工具推荐
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            在这里给大家安利几款软件，都是在写论文过程中常用的软件。
+由于这些软件我都已经安装过了，所以没有给出详细的安装过程，不过均给出了相关的教程地址。
+
+首先就是office和wps
+
+这俩款软件，不需要多说，大家都在用。至于用哪个，看大家使用习惯。
+wps可以从官网上下载安装包，安装. https://www.wps.cn/
+
+office,如果是个人使用，不用商业用途可以在微信公众号==软件安......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by ccbirds on
+            2020-03-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#工具" title="工具">工具</a>
+            
+              <a href="/tags/#写论文" title="写论文">写论文</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/03/12/nanopi性能测试UnixBench/">
+        <h2 class="post-title">
+            nanopi性能测试unixbench
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            入手nanopi不知道它的性能怎么样，下面我们来使用unixbench，对nanopi跑分测试一下
+
+只需要简单的三个命令就可以
+123$ wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh$ chmod +x unixbench.sh$ sudo ./unixbench......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by ccbirds on
+            2020-03-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#nanopi" title="nanopi">nanopi</a>
+            
+              <a href="/tags/#unixbench" title="unixbench">unixbench</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/03/10/nanopi安装oh_my_zsh/">
+        <h2 class="post-title">
+            nanopi安装oh my zsh
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            nanopi是基于ubuntu16.04LTS，自带的bash终端总觉的有点不舒服，有一款终端不错还可以更换主题。oh my zsh。https://ohmyz.sh/
+下面我们来反nanopi的终端美化一下。
+
+首先安装zsh，我们先看一下，我们有没有zsh。
+1234567$ cat /etc/shells/bin/sh/bin/dash/bin/bash/bin/rbash$ echo......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by ccbirds on
+            2020-03-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#nanopi" title="nanopi">nanopi</a>
+            
+              <a href="/tags/#oh my zsh" title="oh my zsh">oh my zsh</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2020/03/04/nanopi压力测试和散热能力/">
         <h2 class="post-title">
             nanopi压力测试和散热能力
         </h2>
@@ -239,7 +381,7 @@
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by ccbirds on
-            2020-04-10
+            2020-03-04
         </p>
         <div class="tags">
             
@@ -446,173 +588,6 @@ cd到oled源文件目录,修改两个文件
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2020/02/27/ubuntu下将文件备份到github/">
-        <h2 class="post-title">
-            ubuntu下将文件备份到github
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            将hexo博客目录备份到github，以防意外删除文件，这样也方便在其他设备上写博客
-
-1. 安装git
-1$ sudo apt-get install git
-2.生成ssh key
-使用命令
-1$ ssh-keygen -t rsa -C “github username”
-会生成下面三个文件
-1id_rsa  id_rsa.pub  known_hosts
-3.github setti......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by ccbirds on
-            2020-02-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
-            
-              <a href="/tags/#git" title="git">git</a>
-            
-              <a href="/tags/#github" title="github">github</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2020/02/27/为使用hexo搭建的博客加入评论系统gitalk/">
-        <h2 class="post-title">
-            为使用hexo搭建的博客加入评论系统gitalk
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            使用hexo结合github搭建自己的个人博客网站，非常方便，而且免费，对于个人来说是一个不错的选择。不过有一个缺点是没有评论系统。需要自己额外引入评论插件。
-现在常用的评论插件有三种：
-disqus：已经被墙了，暂时不考虑。
-gitment：基于github的一个评论系统，但是作者长时间没有维护，需要使用自己的服务器。
-gitalk：也是基于github的一个评论系统，目前可以正常使用。
-......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by ccbirds on
-            2020-02-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#hexo" title="hexo">hexo</a>
-            
-              <a href="/tags/#gitalk" title="gitalk">gitalk</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2020/02/27/手机无线投屏win10/">
-        <h2 class="post-title">
-            手机无线投屏win10
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            手机上屏幕小，看视频特别难受，并且有些软件没与PC版，应该怎么办?下面我来介绍一种方法，将手机屏幕投屏到电脑上。
-
-条件：1.装有win10的PC。
-
-手机具有无线投屏功能（现在大多数手机都有无线投屏功能，只是名字可能有些不同，下面一以荣耀V10手机为例给大家演示）
-
-
-步骤
-
-1.PC端
-
-使用搜索命令搜索“连接”
-
-打开连接应用，
-
-记住你的无线投屏的名字，如果周围有多个设备时，不要选错......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by ccbirds on
-            2020-02-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#投屏" title="投屏">投屏</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2020/02/27/ubuntu中使用pycharm有些快捷键无法使用/">
-        <h2 class="post-title">
-            ubuntu中使用pycharm有些快捷键无法使用
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            问题描述：在使用pycharm过程中，ctrl+c,ctrl+v,ctrl+d等快捷键无法使用。
-解决办法：file-&gt;setting-&gt;Editor下面有一个Vim Emulation选项。
-
-将Handler一列中的vim全部改为IDE，点Apply。
-
-这样，快捷键就可以正常使用啦。
-链接：
-CSDN
-简书
-
-    ..
-    
-    ...
-
-
-    ...
-  ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by ccbirds on
-            2020-02-27
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#ubuntu" title="ubuntu">ubuntu</a>
-            
-              <a href="/tags/#python" title="python">python</a>
-            
-              <a href="/tags/#pcharm" title="pcharm">pcharm</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -649,7 +624,11 @@ CSDN
     <div class="tags">
         
             
-            <a href="/tags/#nanopi" title="nanopi" rel="5">nanopi</a>
+        
+            
+        
+            
+            <a href="/tags/#nanopi" title="nanopi" rel="7">nanopi</a>
             
         
             
@@ -659,11 +638,19 @@ CSDN
             
         
             
-        
-            
-        
-            
             <a href="/tags/#python" title="python" rel="2">python</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
             
         
             
@@ -752,23 +739,23 @@ CSDN
     <ul>
       
         <li>
-          <a href="/2020/04/10/nanopi压力测试和散热能力/">nanopi压力测试和散热能力</a>
+          <a href="/2020/03/18/快速重装win10系统/">快速重装win10系统</a>
         </li>
       
         <li>
-          <a href="/2020/03/01/将静态博客托管在nanopi上/">将静态博客托管在nanopi上</a>
+          <a href="/2020/03/15/论文写作小工具推荐/">论文工具推荐</a>
         </li>
       
         <li>
-          <a href="/2020/03/01/markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床/">markedown云笔记，typora+坚果云+picgo+github图床+阿里云图床</a>
+          <a href="/2020/03/12/nanopi性能测试UnixBench/">nanopi性能测试unixbench</a>
         </li>
       
         <li>
-          <a href="/2020/02/28/nanopi-neo2-black-防烧屏设置/">nanopi_neo2_black_防烧屏设置</a>
+          <a href="/2020/03/10/nanopi安装oh_my_zsh/">nanopi安装oh my zsh</a>
         </li>
       
         <li>
-          <a href="/2020/02/28/nanopi-neo2-black-音乐闹钟/">nanopi neo2 black 音乐闹钟</a>
+          <a href="/2020/03/04/nanopi压力测试和散热能力/">nanopi压力测试和散热能力</a>
         </li>
       
     </ul>
@@ -793,7 +780,7 @@ CSDN
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>
